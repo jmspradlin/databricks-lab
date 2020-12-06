@@ -15,6 +15,7 @@ jobs:
       with:
         tf_actions_version: 0.14.0
         tf_actions_subcommand: "init"
+        args: '-backend-config="resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}" -backend-config="storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }}"'
 
     - name: "terraform plan"
       uses: hashicorp/terraform-github-actions@master

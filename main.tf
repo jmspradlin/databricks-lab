@@ -11,13 +11,20 @@ provider "azurerm" {
     skip_provider_registration = true
 }
 
+terraform {
+  backend "azurerm" {
+    container_name = "tfstate"
+    key            = "nonprod.databricks.tfstate"
+  }
+}   
+
 # Random ID generation
 resource "random_id" "random" {
   byte_length = 3
 }
 
 resource "azurerm_resource_group" "rg" {
-    name        = "random_id.random.dec-${var.rg_name}"
+    name        = "${random_id.random.dec}-${var.rg_name}"
     location    = var.rg_location
 }
 
