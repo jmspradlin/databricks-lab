@@ -17,7 +17,7 @@ resource "random_id" "random" {
 }
 
 resource "azurerm_resource_group" "rg" {
-    name        = var.rg_name
+    name        = "random_id.random.dec-${var.rg_name}"
     location    = var.rg_location
 }
 

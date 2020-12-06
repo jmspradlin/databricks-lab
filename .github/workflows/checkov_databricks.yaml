@@ -27,6 +27,5 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: ./azure-modules/storage_account
           quiet: false
           framework: terraform
