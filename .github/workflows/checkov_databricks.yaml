@@ -1,0 +1,32 @@
+# terraform-ci/.github/workflows/checkov_databricks.yml
+
+name: compliance tests
+
+# Controls when the action will run
+on:
+  push:
+    branches:
+    - '**'
+    paths:
+    - '**'
+  pull_request:
+    branches:
+    - '**'
+    paths:
+    - '**'
+
+jobs:
+  checkov-job:
+    runs-on: ubuntu-latest
+    name: checkov-action
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+        
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: ./azure-modules/storage_account
+          quiet: false
+          framework: terraform
