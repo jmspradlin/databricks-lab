@@ -1,5 +1,5 @@
 provider "azurerm" {
-    version = "2.25.0"
+    version = "~>2.40.0"
     features {}
     
     skip_provider_registration = true
@@ -8,11 +8,6 @@ provider "azurerm" {
 # Random ID generation
 resource "random_id" "random" {
   byte_length = 3
-}
-
-resource "random_password" "sql_admin_pwd" {
-  length            = 32
-  special           = false
 }
 
 resource "azurerm_resource_group" "rg" {
