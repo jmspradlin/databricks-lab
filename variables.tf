@@ -18,10 +18,9 @@ variable "client_secret" {
 }
 
 variable "rg_name" {
-    type        = string
-    sensitive   = true
+    type    = string
+    default = "data-lake-rg01"
 }
-
 variable "rg_location" {
     default = "eastus2"
 }
