@@ -41,6 +41,20 @@ resource "azurerm_storage_account" "dlstorage" {
   is_hns_enabled  = true
 
   account_replication_type = var.storage_replication
+  
+  enable_https_traffic_only = true
+  min_tls_version           = TLS1_2
+  allow_blob_public_access = false
+
+  queue_properties {
+    logging {
+      delete                = true
+      read                  = true
+      write                 = true
+      version               = "1.0"
+      retention_policy_days = 10
+    } 
+  }
 }
 
 resource "azurerm_databricks_workspace" "databricks01" {
