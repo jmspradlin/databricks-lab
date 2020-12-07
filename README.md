@@ -6,9 +6,11 @@ What will be created:
 - A random-string named storage account
 - A random-string named Azure Databricks instance (Standard sku)
 
-All resources will build in Azure eastus2 region. TF code is, for the most part, dry. 
+All resources will build in Azure eastus2 region. TF code is, for the most part, [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). 
 
 ## Getting Started
+So you're gonna want a state file. This will keep your environment consistent regardless of how many people contribute to it. More details below
+
 ### State file creation
 Create a remote backend state file with the `state` directory. The state for the storage account this creates will remain local due to .gitignore properties.
 
