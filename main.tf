@@ -13,8 +13,10 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    container_name = "tfstate"
-    key            = "nonprod.databricks.tfstate"
+    resource_group_name   = "tfstate-61759"
+    storage_account_name  = "tfstate61759"
+    container_name        = "tfstate"
+    key                   = "nonprod.databricks.tfstate"
   }
 }   
 
