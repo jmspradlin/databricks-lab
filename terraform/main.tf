@@ -36,11 +36,12 @@ resource "azurerm_storage_account" "dlstorage" {
   resource_group_name       = azurerm_resource_group.rg.name
   account_kind              = var.account_kind
   account_tier              = var.account_tier
-  is_hns_enabled            = true
   account_replication_type  = var.storage_replication
-  enable_https_traffic_only = true
+  
   min_tls_version           = "TLS1_2"
   allow_blob_public_access  = false
+  is_hns_enabled            = true
+  enable_https_traffic_only = true
 }
 
 resource "azurerm_databricks_workspace" "databricks01" {
