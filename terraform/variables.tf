@@ -1,6 +1,6 @@
 variable "tenant_id" {
     type        = string
-    sensitive   = true
+    sensitive   = true # used only in Terraform ver. => 0.14
 }
 variable "subscription_id" {
     type        = string
