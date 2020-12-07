@@ -1,9 +1,6 @@
 name: databricks-azure-deploy
 
 on:
-  push:
-    paths:
-      - 'terraform/**'
   pull_request:
     paths:
       - 'terraform/**'
