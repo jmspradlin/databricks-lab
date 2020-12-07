@@ -34,10 +34,14 @@ terraform plan -var-file=nonprod.tfvars -var='client_secret=********'
 
 One the storage account is created, the SA name and Resource Group, along with the primary access key will be output. Save each to a secret titled `STORAGE_ACCOUNT_NAME`, `RESOURCE_GROUP_NAME` and `ACCESS_KEY` respectively.
 
-![Terraform Output](https://raw.githubusercontent.com/jmspradlin/databricks-lab/master/docs/secrets1.jpg)
+<img src="https://raw.githubusercontent.com/jmspradlin/databricks-lab/master/docs/secrets1.jpg" width="250"><br/><br/>
 
-![Github Secrets](https://raw.githubusercontent.com/jmspradlin/databricks-lab/master/docs/secrets2.jpg)
+<img src="https://raw.githubusercontent.com/jmspradlin/databricks-lab/master/docs/secrets2.jpg" width="500"><br/><br/>
+
+## Databricks deployment
+Add your `SUBSCRIPTION_ID`, `TENANT_ID`, `CLIENT_ID` and `CLIENT_SECRET` to your Github secrets for the project.
+
+The `azure-deploy.yaml` and `checkov_databricks.yaml` files will trigger on changes to the terraform directory, using the subscription ID, tenant id, client id and secret, as well as the resource group name, storage account name, and storage access key.
 
 ## Checkov compliance testing
-Checkov (checkov.io) is an automated compliance framework to ensure code aligns to CIS benchmarks and industry best practices. Testing occurs on all code pushes to ensure code aligns to benchmarks.
-
+Checkov (checkov.io) is an automated compliance framework to ensure code aligns to CIS benchmarks and industry best practices. Testing occurs on all code pushes to the `terraform` directory to ensure code aligns to benchmarks. Currently excluded are benchmarks for [Enable Requests on Storage Logging for Queue Service](https://docs.bridgecrew.io/docs/enable-requests-on-storage-logging-for-queue-service) and [Set Default Network Access Rule for Storage Accounts to Deny](https://docs.bridgecrew.io/docs/set-default-network-access-rule-for-storage-accounts-to-deny)
