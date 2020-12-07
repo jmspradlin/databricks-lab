@@ -3,10 +3,10 @@ name: databricks-azure-deploy
 on:
   push:
     paths:
-      - './terraform'
+      - 'terraform/**'
   pull_request:
     paths:
-      - './terraform'
+      - 'terraform/**'
 
 
 jobs:
