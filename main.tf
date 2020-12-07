@@ -13,8 +13,6 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name   = "tfstate-61759"
-    storage_account_name  = "tfstate61759"
     container_name        = "tfstate"
     key                   = "nonprod.databricks.tfstate"
   }
@@ -43,18 +41,8 @@ resource "azurerm_storage_account" "dlstorage" {
   account_replication_type = var.storage_replication
   
   enable_https_traffic_only = true
-  min_tls_version           = TLS1_2
+  min_tls_version           = "TLS1_2"
   allow_blob_public_access = false
-
-  queue_properties {
-    logging {
-      delete                = true
-      read                  = true
-      write                 = true
-      version               = "1.0"
-      retention_policy_days = 10
-    } 
-  }
 }
 
 resource "azurerm_databricks_workspace" "databricks01" {

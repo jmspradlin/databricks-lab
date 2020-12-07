@@ -31,18 +31,8 @@ resource "azurerm_storage_account" "tfstate" {
   account_replication_type    = "LRS"
 
   enable_https_traffic_only = true
-  min_tls_version           = TLS1_2
-  allow_blob_public_access = false
-
-  queue_properties {
-    logging {
-      delete                = true
-      read                  = true
-      write                 = true
-      version               = "1.0"
-      retention_policy_days = 10
-    } 
-  } 
+  min_tls_version           = "TLS1_2"
+  allow_blob_public_access  = false
 }
 
 resource "azurerm_storage_container" "tfstate" {
@@ -57,4 +47,8 @@ output "storage_account_name" {
 
 output "resource_group_name" {
   value = azurerm_resource_group.rg.name
+}
+
+output "access_key1" {
+  value = azurerm_storage_account.tfstate.primary_access_key
 }
