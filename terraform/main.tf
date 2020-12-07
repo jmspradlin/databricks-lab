@@ -31,27 +31,21 @@ resource "azurerm_resource_group" "rg" {
 
 # Resources
 resource "azurerm_storage_account" "dlstorage" {
-  name        = random_id.random.dec
-  location    = azurerm_resource_group.rg.location
-  
-  resource_group_name = azurerm_resource_group.rg.name
-
-  account_kind    = var.account_kind
-  account_tier    = var.account_tier
-  is_hns_enabled  = true
-
-  account_replication_type = var.storage_replication
-  
+  name                      = random_id.random.dec
+  location                  = azurerm_resource_group.rg.location
+  resource_group_name       = azurerm_resource_group.rg.name
+  account_kind              = var.account_kind
+  account_tier              = var.account_tier
+  is_hns_enabled            = true
+  account_replication_type  = var.storage_replication
   enable_https_traffic_only = true
   min_tls_version           = "TLS1_2"
-  allow_blob_public_access = false
+  allow_blob_public_access  = false
 }
 
 resource "azurerm_databricks_workspace" "databricks01" {
-  name      = "databricks${random_id.random.dec}"
-  location  = azurerm_resource_group.rg.location
-  
+  name                = "databricks${random_id.random.dec}"
+  location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-
-  sku   = var.databricks_sku
+  sku                 = var.databricks_sku
 }
