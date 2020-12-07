@@ -34,9 +34,9 @@ terraform plan -var-file=nonprod.tfvars -var='client_secret=********'
 
 One the storage account is created, the SA name and Resource Group, along with the primary access key will be output. Save each to a secret titled `STORAGE_ACCOUNT_NAME`, `RESOURCE_GROUP_NAME` and `ACCESS_KEY` respectively.
 
-![Terraform Output](https://github.com/jmspradlin/databricks-lab/docs/secrets1.jpg)
+![Terraform Output](https://raw.githubusercontent.com/jmspradlin/databricks-lab/master/docs/secrets1.jpg)
 
-![Github Secrets](https://github.com/jmspradlin/databricks-lab/docs/secrets2.jpg)
+![Github Secrets](https://raw.githubusercontent.com/jmspradlin/databricks-lab/master/docs/secrets2.jpg)
 
 ## Checkov compliance testing
 Checkov (checkov.io) is an automated compliance framework to ensure code aligns to CIS benchmarks and industry best practices. Testing occurs on all code pushes to ensure code aligns to benchmarks.
