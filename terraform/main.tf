@@ -23,11 +23,13 @@ resource "random_id" "random" {
   byte_length = 3
 }
 
+# Resource group creation
 resource "azurerm_resource_group" "rg" {
     name        = "${random_id.random.dec}-${var.rg_name}"
     location    = var.rg_location
 }
 
+# Resources
 resource "azurerm_storage_account" "dlstorage" {
   name        = random_id.random.dec
   location    = azurerm_resource_group.rg.location
